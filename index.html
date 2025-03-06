@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompt Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <script src="index.js"></script>
+  <body>
+    <div class="side-menu">
+      <h1>
+        Prompt
+        <br />
+        Builder
+      </h1>
+      
+
+      <div id="char-counter">Caracteres: 0</div>
+
+      <hr />
+
+      <button class="clear-all-btn" onclick="clearAllFields()">
+        Apaga Tudo
+      </button>
+      <button class="copy-all-btn" onclick="copyToClipboard()">Copia Tudo</button>
+      <hr />
+      <h3>Links para IAs</h3>
+      <div class="language-selector">
+        <button onclick="window.open('https://grok.com', '_blank')" alt="Grok">
+          <img
+            class="button-img"
+            src="./src/assets/grok-logo-black.svg"
+            alt="Grok"
+          />
+        </button>
+        <button onclick="window.open('https://chatGPT.com', '_blank')">
+          <img
+            class="button-img"
+            src="./src/assets/chatgpt-logo-black.svg"
+            alt="ChatGPT"
+          />
+        </button>
+        <button onclick="window.open('https://chat.deepseek.com/', '_blank')">
+          <img
+            class="button-img"
+            src="./src/assets/deepseek-logo-black.svg"
+            alt="Deepseek"
+          />
+        </button>
+        <button
+          onclick="window.open('https://gemini.google.com/app', '_blank')"
+        >
+          <img
+            class="button-img"
+            src="./src/assets/gemini-logo-black.svg"
+            alt="Gemini"
+          />
+        </button>
+        <button
+        onclick="window.open('https:////copilot.microsoft.com', '_blank')"
+        >
+          <img
+            class="button-img"
+            src="./src/assets/copilot-logo-black.svg"
+            alt="Copilot"
+          />
+      </button>
+        </button>
+        <button onclick="window.open('https:////claude.ai', '_blank')">
+          <img
+            class="button-img"
+            src="./src/assets/claude-logo-black.svg"
+            alt="Claude"
+          />
+        </button>
+      </div>
+      <hr />
+      <h3>Meus links</h3>
+      <div class="language-selector">
+        <button
+          onclick="window.open('https://www.linkedin.com/in/viniciusgalmeida/', '_blank')"
+        >
+        <img
+        class="button-img"
+        src="./src/assets/linkedin-logo-black.svg"
+        alt="Linkedin"
+      />
+    </button>
+    <button
+    onclick="window.open('https://viniciusgalmeida.github.io/Portfolio-Vinicius/', '_blank')"
+    >
+    
+    <img
+    class="button-img"
+    src="./src/assets/portfolio-logo-black.svg"
+    alt="Portfolio"
+  />
+  </button>
+  <button
+  onclick="window.open('https://https://github.com/Viniciusgalmeida', '_blank')"
+  >
+  <img
+  class="button-img"
+  src="./src/assets/github-logo-black.svg"
+  alt="Github"
+  />
+</button>
+<button
+onclick="window.open('https://www.codewars.com/users/Viniciusgalmeida', '_blank')"
+>
+<img
+class="button-img"
+src="./src/assets/codewars-logo-black.svg"
+alt="Codewars"
+/>
+        </button>
+      </div>
+    </div>
+
+
+    <div class="global-container">
+      <div class="prompt-bundle">
+        <div class="prompt-container">
+          <label for="prompt1">Instrução:</label>
+
+          <select onchange="insertText('prompt1', this.value)">
+            <option value="">Direcionamentos para IA</option>
+            <option value="Agora você é um especialista em ">
+              Agora você é um especialista em (adicione uma especialidade)
+            </option>
+            <option value="Agora você é um especialista em programação.">
+              Agora você é um especialista em programação.
+            </option>
+            <option value="Qual o problema deste código? ">
+              Qual o problema deste código?
+            </option>
+            <option value="Deixe este código mais limpo e rápido. ">
+              Deixe este código mais limpo e rápido.
+            </option>
+            <option value="Explique esta imagem. ">
+              Explique esta imagem.
+            </option>
+          </select>
+          <div class="popup-clearbtn-bundle">
+
+            <!-- POP-UP -->
+            <button class="popup-btn" onclick="openPopup1()">?</button>
+
+            <div id="popup1" class="popup">
+              <div class="popup-content">
+                <span class="close-btn" onclick="closePopup1()">&times;</span>
+                <p>
+                  Transforme a IA em uma especialista em algo e na sequência
+                  peça a ela para que faça o que você precisa.
+                  <br /><br />
+                  Exemplo:
+                  <br />
+                  "Agora você é um especialista em nutrição. Crie uma receita
+                  variada e saudável para o café da manhã durante a semana.
+                </p>
+              </div>
+            </div>
+            <!-- FIM DO POP-UP -->
+
+            <button class="clear-btn" onclick="clearField('prompt1')">X</button>
+          </div>
+        </div>
+        <textarea id="prompt1" oninput="adjustHeight(this)">
+Instrução: </textarea
+        >
+      </div>
+
+      <!-- PROMPT 2 -->
+
+      <div class="prompt-bundle">
+        <div class="prompt-container">
+          <label for="prompt2">Formato da resposta:</label>
+
+          <select onchange="insertText('prompt2', this.value)">
+            <option value="">Direcionamentos para IA</option>
+            <option value="Responda resumidamente. ">
+              Responda resumidamente
+            </option>
+            <option value="Explique com um passo a passo. ">
+              Explique com um passo a passo.
+            </option>
+
+            <option value="Retorne uma tabela. ">Retorne uma tabela</option>
+            <option value="Retorne um arquivo .xlsx. ">Retorne um arquivo .xlsx</option>
+            <option value="Retorne apenas o código. ">
+              Retorne apenas o código
+            </option>
+            <option value="Responda em português brasileiro">
+              Responda em português brasileiro
+            </option>
+            <option value="Responda como uma postagem no(a) ">
+              Responda como uma postagem na (insira rede social)
+            </option>
+            <option value="Faça um resumo. ">Faça um resumo.</option>
+            <option
+              value="Responda como se você estivesse respondendo uma criança de 10 anos. "
+            >
+              Resposta para uma criança de 10 anos
+            </option>
+            <option value="Responda em tópicos tipo bullet points. ">
+              Responda em tópicos
+            </option>
+          </select>
+          <div class="popup-clearbtn-bundle">
+            <!-- POP-UP -->
+            <button class="popup-btn" onclick="openPopup2()">?</button>
+
+            <div id="popup2" class="popup">
+              <div class="popup-content">
+                <span class="close-btn" onclick="closePopup2()">&times;</span>
+                <p>
+                  Defina um formato para a IA te responder. Pode ser uma
+                  resposta resumida, tabela, lista com bullet points, etc...
+                  <br /><br />
+                  Exemplo:
+                  <br />
+                  Responda em formato de tabela
+                </p>
+              </div>
+            </div>
+            <!-- FIM DO POP-UP -->
+            <button class="clear-btn" onclick="clearField('prompt2')">X</button>
+          </div>
+        </div>
+        <textarea id="prompt2" oninput="adjustHeight(this)">
+Formato da resposta: </textarea
+        >
+      </div>
+
+      <!-- PROMPT 3 -->
+      <div class="prompt-bundle">
+        <div class="prompt-container">
+          <label for="prompt3">Atenção:</label>
+          <select onchange="insertText('prompt3', this.value)">
+            <option value="">Direcionamentos para IA</option>
+
+            <option
+              value="Quais informações poderiam melhorar a sua resposta? "
+            >
+              Quais informações poderiam melhorar a resposta?
+            </option>
+            <option value="Antes de dar a resposta, revise se não há erros. ">
+              Antes de dar a resposta, revise se não há erros.
+            </option>
+            <option value="Pense bem antes de responder. ">
+              Pense bem antes de responder.
+            </option>
+            <option value="Me dê as fontes da sua resposta. ">
+              Me dê as fontes da sua resposta.
+            </option>
+            <option
+              value="Seja específico na resposta, não fale de situações semelhantes. "
+            >
+              Seja específica na resposta, não fale de situações semelhantes.
+            </option>
+            <option value="Não quero que pareça uma resposta de robô. ">
+              Não quero que pareça uma resposta de robô
+            </option>
+          </select>
+          <div class="popup-clearbtn-bundle">
+            <!-- POP-UP -->
+            <button class="popup-btn" onclick="openPopup3()">?</button>
+
+            <div id="popup3" class="popup">
+              <div class="popup-content">
+                <span class="close-btn" onclick="closePopup3()">&times;</span>
+                <p>
+                  Estabeleça limites para a IA.
+                  <br /><br />
+                  Exemplo:
+                  <br />
+                  "Pense bem antes de responder. "
+                </p>
+              </div>
+            </div>
+            <!-- FIM DO POP-UP -->
+            <button class="clear-btn" onclick="clearField('prompt3')">X</button>
+          </div>
+        </div>
+        <textarea id="prompt3" oninput="adjustHeight(this)">Atenção: </textarea>
+      </div>
+
+      <!-- PROMPT 4 -->
+      <div class="prompt-bundle">
+        <div class="prompt-container">
+          <label for="prompt4">Contexto:</label>
+          <select onchange="insertText('prompt4', this.value)">
+            <option value="">Direcionamentos para IA</option>
+            <option value="Eu não sei nada sobre o assunto.">
+              Eu não sei nada sobre o assunto.
+            </option>
+            <option value="Estou escrevendo um artigo científico.">
+              Estou escrevendo um artigo científico.
+            </option>
+
+            <option value="Linguagens de programação utilizadas: ">
+              Linguagens utilizadas: (adicione as linguagens)
+            </option>
+          </select>
+          <div class="popup-clearbtn-bundle">
+            <!-- POP-UP -->
+            <button class="popup-btn" onclick="openPopup4()">?</button>
+
+            <div id="popup4" class="popup">
+              <div class="popup-content">
+                <span class="close-btn" onclick="closePopup4()">&times;</span>
+                <p>
+                  Dê o contexto para que a IA possa responder de forma mais
+                  precisa.
+                  <br /><br />
+                  Exemplo:
+                  <br />
+                  "Estou escrevendo um artigo científico."
+                </p>
+              </div>
+            </div>
+            <!-- FIM DO POP-UP -->
+            <button class="clear-btn" onclick="clearField('prompt4')">X</button>
+          </div>
+        </div>
+        <textarea id="prompt4" oninput="adjustHeight(this)">
+Contexto: </textarea
+        >
+      </div>
+    </div>
+
+    <div id="notification" class="notification">Prompt copiado!</div>
+  </body>
+</html>
