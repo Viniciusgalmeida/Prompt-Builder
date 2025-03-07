@@ -2,13 +2,16 @@
 
 Prompt Builder is a web application designed to help users create and manage prompts for AI interactions. The application provides a user-friendly interface to build prompts with specific instructions, response formats, attention guidelines, and context.
 
+![Prompt Builder Screenshot](https://raw.githubusercontent.com/Viniciusgalmeida/Prompt-Builder/refs/heads/main/src/assets/Prompt%20Builder.png)
+
+Link: https://simplepromptbuilder.netlify.app/
+
 ## Features
 
 - **Character Counter**: Displays the total number of characters in all prompts.
 - **Clear All Fields**: Resets all prompt fields to their default values.
 - **Copy All Prompts**: Copies all prompts to the clipboard for easy sharing.
 - **AI Links**: Quick access buttons to various AI platforms.
-- **User Links**: Quick access buttons to personal links like LinkedIn, Portfolio, GitHub, and Codewars.
 - **Dynamic Textarea**: Automatically adjusts the height of textareas based on content.
 - **Pop-up Help**: Provides detailed explanations for each prompt field.
 
