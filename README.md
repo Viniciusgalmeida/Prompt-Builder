@@ -43,6 +43,18 @@ Link: https://simplepromptbuilder.netlify.app/
 
 Contributions are welcome! Please fork the repository and create a pull request with your changes.
 
+## Upgrade Wishlist:
+
+- [ ] Support for different languages.
+- [ ] Place to insert documents (when clicking copy, the documents would be transformed into text and added to the end of the prompt).
+- [ ] Possibility to create texts and save them as predefined texts so that they can be added to the prompt.
+- [ ] Enable dark mode.
+- [ ] Create a version of the prompt builder specifically for generating images.
+- [ ] On mobile, place the links to the AIs in a fixed component at the bottom of the page.
+- [ ] Create the possibility for the user to log in and have an area with personalized prompts.
+- [ ] Change the character count to word count.
+- [ ] Insert a favicon.
+
 ## License
 
 This project is licensed under the MIT License.
