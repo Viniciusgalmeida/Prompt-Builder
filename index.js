@@ -111,33 +111,32 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-// CONTADOR DE CARACTERES -------------------------------------
+// CONTADOR DE PALAVRAS -------------------------------------
 
-function updateCharCount() {
-  let totalChars = 0;
+function updateWordCount() {
+  let totalWords = 0;
   document.querySelectorAll("textarea").forEach((textarea) => {
-    totalChars += textarea.value.trim().length;
+    const words = textarea.value.trim().split(/\s+/).filter(Boolean); // Separa por espaços e remove vazios
+    totalWords += words.length;
   });
-  document.getElementById(
-    "char-counter"
-  ).innerText = `Caracteres: ${totalChars}`;
+  document.getElementById("char-counter").innerText = `Palavras: ${totalWords}`;
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("textarea").forEach((textarea) => {
-    textarea.addEventListener("input", updateCharCount);
+    textarea.addEventListener("input", updateWordCount);
   });
 
   document.querySelectorAll("select").forEach((select) => {
     select.addEventListener("change", () => {
-      setTimeout(updateCharCount, 0);
+      setTimeout(updateWordCount, 0);
     });
   });
 
-  updateCharCount();
+  updateWordCount();
 });
 
 function clearField(textareaId) {
   document.getElementById(textareaId).value = "";
-  updateCharCount(); // Atualiza o contador após limpar
+  updateWordCount(); // Atualiza o contador após limpar
 }
