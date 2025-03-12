@@ -43,6 +43,7 @@ function clearAllFields() {
   document.getElementById("prompt2").value = "Formato da resposta: ";
   document.getElementById("prompt3").value = "Atenção: ";
   document.getElementById("prompt4").value = "Contexto: ";
+  updateCharCount();
 }
 
 // Função modificada para adicionar texto ao final
@@ -141,4 +142,3 @@ function clearField(textareaId) {
   document.getElementById(textareaId).value = "";
   updateCharCount(); // Atualiza o contador após limpar
 }
-
