@@ -49,13 +49,21 @@ function clearAllFields() {
 // Função modificada para adicionar texto ao final
 function insertText(id, text) {
   const textarea = document.getElementById(id);
+  const select = event.target; // Captura o select que acionou a função
+
   // Adiciona quebra de linha se já houver conteúdo
   if (textarea.value) {
     textarea.value += "\n" + text;
   } else {
     textarea.value = text;
   }
+
   adjustHeight(textarea);
+
+  // Retorna o select para a primeira opção
+  setTimeout(() => {
+    select.selectedIndex = 0;
+  }, 1);
 }
 
 // FUNÇÃO POP-UP 1
