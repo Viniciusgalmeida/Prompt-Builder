@@ -24,6 +24,7 @@ body {
   height: 100vh;
   background-color: var(--tertiary-color);
   position: relative;
+  margin-bottom: 70px;
 }
 
 .side-menu {
@@ -47,7 +48,7 @@ hr {
 }
 
 .global-container {
-  height: 100%;
+  height: auto;
   width: 85%;
   margin: 0 0 0 15%;
   padding: 5%;
@@ -277,6 +278,10 @@ button:active {
   cursor: pointer;
 }
 
+footer {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .side-menu {
     width: 100%;
@@ -300,13 +305,13 @@ button:active {
   .global-container {
     width: 100%;
     height: auto;
-    margin: 0;
-    position: absolute;
+    margin: 0 0 70px 0;
+    position: relative;
     top: 110px;
+    padding-bottom: 70px;
   }
 
   .prompt-container {
-    /* top: 10%; */
     flex-direction: column;
     align-items: center;
     margin-bottom: 30px;
@@ -320,5 +325,23 @@ button:active {
     width: 100%;
     max-width: 100%;
     font-size: 0.875rem;
+  }
+
+  footer {
+    position: relative; /* Change to relative */
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    background-color: var(--secondary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .footer-buttons {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
