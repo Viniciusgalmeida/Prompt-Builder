@@ -340,9 +340,9 @@ footer {
   }
 
   .footer-buttons {
-    width: 80%;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
   }
 }
