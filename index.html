@@ -144,17 +144,14 @@ alt="Codewars"
             <option value="Agora você é um especialista em programação.">
               Agora você é um especialista em programação.
             </option>
-            <option value="Me explique detalhadamente o problema. ">
-              Me explique detalhadamente o problema.
-            </option>
-            <option value="O que pode complementar este raciocínio? ">
-              O que pode complementar este raciocínio?
-            </option>
             <option value="Deixe este código mais limpo e rápido. ">
               Deixe este código mais limpo e rápido.
             </option>
-            <option value="No final da sua resposta faça um resumo. ">
-              No final da sua resposta faça um resumo.
+            <option value="Me explique o que você entende deste assunto. ">
+              Me explique o que você entende deste assunto.
+            </option>
+            <option value="Este é o problema, me explique o que é e como resolvê-lo. ">
+              Este é o problema, me explique o que é e como resolvê-lo.
             </option>
           </select>
           <div class="popup-clearbtn-bundle">
@@ -172,7 +169,7 @@ alt="Codewars"
                   Exemplo:
                   <br />
                   "Agora você é um especialista em nutrição. Crie uma receita
-                  variada e saudável para o café da manhã durante a semana.
+                  variada e saudável para o café da manhã durante a semana."
                 </p>
               </div>
             </div>
@@ -194,8 +191,8 @@ Instrução: </textarea
 
           <select onchange="insertText('prompt2', this.value)">
             <option value="">Direcionamentos para IA</option>
-            <option value="Responda resumidamente. ">
-              Responda resumidamente
+            <option value="Responda em tópicos tipo bullet points. ">
+              Responda em tópicos
             </option>
             <option value="Explique com um passo a passo. ">
               Explique com um passo a passo.
@@ -209,20 +206,12 @@ Instrução: </textarea
             <option value="Responda em português brasileiro">
               Responda em português brasileiro
             </option>
-            <option value="Responda como uma postagem no(a) ">
-              Responda como uma postagem na (insira rede social)
-            </option>
             <option
               value="Responda como se você estivesse respondendo uma criança de 10 anos. "
             >
               Resposta para uma criança de 10 anos
             </option>
-            <option value="Responda em tópicos tipo bullet points. ">
-              Responda em tópicos
-            </option>
-            <option value="Responda em listas numeradas. ">
-              Responda em listas numeradas
-            </option>
+            
           </select>
           <div class="popup-clearbtn-bundle">
             <!-- POP-UP -->
@@ -237,7 +226,7 @@ Instrução: </textarea
                   <br /><br />
                   Exemplo:
                   <br />
-                  Responda em formato de tabela
+                  "Responda em formato de tabela."
                 </p>
               </div>
             </div>
@@ -258,23 +247,30 @@ Formato da resposta: </textarea
             <option value="">Direcionamentos para IA</option>
 
             <option
-              value="Quais informações poderiam melhorar a sua resposta? "
+              value="Antes de responder me diga se você precisa de mais informações. "
             >
-              Quais informações poderiam melhorar a resposta?
+              Antes de responder me diga se você precisa de mais informações.
             </option>
-            <option value="Antes de dar a resposta, revise se não há erros. ">
-              Antes de dar a resposta, revise se não há erros.
+            <option value="Responda resumidamente. ">
+              Responda resumidamente
             </option>
-            <option value="Pense bem antes de responder. ">
-              Pense bem antes de responder.
+            <option value="Quais são os prós e contras? ">
+              Quais são os prós e contras?
+            </option>
+            <option value="Me explique detalhadamente. ">
+              Me explique detalhadamente.
             </option>
             <option value="Me dê as fontes da sua resposta. ">
               Me dê as fontes da sua resposta.
             </option>
-            <option
-              value="Seja específico na resposta, não fale de situações semelhantes. "
-            >
-              Seja específica na resposta, não fale de situações semelhantes.
+            <option value="No final da sua resposta faça um resumo. ">
+              No final da sua resposta faça um resumo.
+            </option>
+            <option value="Resuma em três frases diretas. ">
+              Resuma em três frases diretas.
+            </option>
+            <option value="Marque em negrito as partes mais importantes da sua resposta. ">
+              Marque em negrito as partes mais importantes da sua resposta.
             </option>
           </select>
           <div class="popup-clearbtn-bundle">
@@ -285,11 +281,11 @@ Formato da resposta: </textarea
               <div class="popup-content">
                 <span class="close-btn" onclick="closePopup3()">&times;</span>
                 <p>
-                  Estabeleça limites para a IA.
+                  Estabeleça critérios para a IA.
                   <br /><br />
                   Exemplo:
                   <br />
-                  "Pense bem antes de responder. "
+                  "Marque em negrito as partes mais importantes da sua resposta."
                 </p>
               </div>
             </div>
