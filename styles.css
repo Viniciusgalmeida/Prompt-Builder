@@ -48,7 +48,7 @@ hr {
 }
 
 .global-container {
-  height: auto;
+  height: 100vh;
   width: 85%;
   margin: 0 0 0 15%;
   padding: 5%;
@@ -305,7 +305,7 @@ footer {
 
   .global-container {
     width: 100%;
-    height: auto;
+    height: 100vh;
     margin: 0 0 70px 0;
     position: relative;
     top: 110px;
