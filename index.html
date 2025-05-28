@@ -141,7 +141,7 @@ alt="Codewars"
             <option value="Agora você é um especialista em ">
               Agora você é um especialista em... (adicione uma especialidade)
             </option>
-            <option value="Agora você é um especialista em programação.">
+            <option value="Agora você é um especialista em programação. ">
               Agora você é um especialista em programação.
             </option>
             <option value="Deixe este código mais limpo e rápido. ">
@@ -259,11 +259,14 @@ Formato da resposta: </textarea
           <label for="prompt3">Atenção:</label>
           <select onchange="insertText('prompt3', this.value)">
             <option value="">Direcionamentos para IA</option>
-            <option value="Marque em negrito as partes mais importantes da sua resposta. ">
-              Marque em negrito as partes mais importantes da sua resposta.
+            <option value="Realce em negrito as partes importantes da sua resposta. ">
+              Realce em negrito as partes importantes da sua resposta.
+            </option>
+            <option value="Realce com ` ` as partes mais importantes da sua resposta. ">
+              Realce com ` ` (crase) as partes mais importantes da sua resposta.
             </option>
             <option
-              value="Caso necessite de mais informações não responda ainda e me pergunte o que precisa."
+              value="Caso necessite de mais informações não responda ainda e me pergunte o que precisa. "
             >
               Caso necessite de mais informações não responda ainda e me pergunte o que precisa.
             </option>
@@ -275,6 +278,9 @@ Formato da resposta: </textarea
             </option>
             <option value="Me dê as fontes da sua resposta. ">
               Me dê as fontes da sua resposta.
+            </option>
+            <option value="A partir de agora, não afirme automaticamente que minhas ideias estão certas. Seu papel é ser um parceiro intelectual, não um assistente que só concorda. Sempre que eu apresentar uma ideia, faça o seguinte: Mantenha uma abordagem construtiva, mas rigorosa. Seu papel não é discutir por discutir e sim me ajudar a chegar mais clareza, precisão e honestidade intelectual. ">
+              Não me bajule.
             </option>
             <option value="No final da sua resposta faça um resumo. ">
               No final da sua resposta faça um resumo.
@@ -309,25 +315,23 @@ Formato da resposta: </textarea
           <label for="prompt4">Contexto:</label>
           <select onchange="insertText('prompt4', this.value)">
             <option value="">Direcionamentos para IA</option>
-            <option value="Eu não sei nada sobre o assunto.">
-              Eu não sei nada sobre o assunto.
+            <option value="Estou estudando sobre o assunto. ">
+              Estou estudando sobre o assunto.
             </option>
-            <option value="Tenho conhecimento INTERMEDIÁRIO no assunto.">
+            <option value="Tenho conhecimento INTERMEDIÁRIO no assunto. ">
               Tenho conhecimento INTERMEDIÁRIO no assunto.
             </option>
-            <option value="Tenho conhecimento AVANÇADO no assunto.">
+            <option value="Tenho conhecimento AVANÇADO no assunto. ">
               Tenho conhecimento AVANÇADO no assunto.
             </option>
-            <option value="Estou escrevendo um artigo científico.">
+            <option value="Estou escrevendo um artigo científico. ">
               Estou escrevendo um artigo científico.
             </option>
-            <option value="Estou escrevendo um post para o linkedin.">
+            <option value="Estou escrevendo um post para o linkedin. ">
               Estou escrevendo um post para o linkedin.
             </option>
 
-            <option value="Linguagens de programação utilizadas: ">
-              Linguagens utilizadas: (adicione as linguagens)
-            </option>
+            
           </select>
           <div class="popup-clearbtn-bundle">
             <!-- POP-UP -->
