@@ -332,7 +332,7 @@ footer {
     position: relative; /* Change to relative */
     bottom: 0;
     width: 100%;
-    height: 70px;
+    height: auto;
     background-color: var(--secondary-color);
     display: flex;
     justify-content: center;
@@ -342,7 +342,9 @@ footer {
   .footer-buttons {
     width: 100%;
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
   }
 }
