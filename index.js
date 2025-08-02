@@ -328,12 +328,12 @@ const translations = {
     
     // Select options - Instrução
     'direcionamentos_ia': 'Direcionamentos para IA',
-    'especialista_geral': 'Agora você é um especialista em... (adicione uma especialidade)',
+    'especialista_geral': 'Agora você é um especialista em ',
     'especialista_programacao': 'Agora você é um especialista em programação.',
     'codigo_limpo': 'Deixe este código mais limpo e rápido.',
     'explicar_codigo': 'Me explique este código.',
-    'varias_perguntas': 'Aguarde pois irei fazer várias perguntas sobre...',
-    'diferencas': 'Quais são as diferenças entre...',
+    'varias_perguntas': 'Aguarde pois irei fazer várias perguntas sobre ',
+    'diferencas': 'Quais são as diferenças entre ',
     'pros_contras': 'Quais são os prós e contras?',
     
     // Select options - Formato da resposta
@@ -395,12 +395,12 @@ const translations = {
     
     // Select options - Instruction
     'direcionamentos_ia': 'AI Directions',
-    'especialista_geral': 'Now you are an expert in... (add a specialty)',
+    'especialista_geral': 'Now you are an expert in ',
     'especialista_programacao': 'Now you are an expert in programming.',
     'codigo_limpo': 'Make this code cleaner and faster.',
     'explicar_codigo': 'Explain this code to me.',
-    'varias_perguntas': 'Wait as I will ask several questions about...',
-    'diferencas': 'What are the differences between...',
+    'varias_perguntas': 'Wait as I will ask several questions about ',
+    'diferencas': 'What are the differences between ',
     'pros_contras': 'What are the pros and cons?',
     
     // Select options - Response format
