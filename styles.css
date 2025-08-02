@@ -24,7 +24,6 @@ body {
   height: 100vh;
   background-color: var(--tertiary-color);
   position: relative;
-  margin-bottom: 70px;
 }
 
 .side-menu {
