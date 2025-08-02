@@ -133,6 +133,13 @@ function updateCharCount() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Load saved language preference
+  const savedLanguage = localStorage.getItem('language');
+  if (savedLanguage) {
+    currentLanguage = savedLanguage;
+    updateLanguage();
+  }
+
   document.querySelectorAll("textarea").forEach((textarea) => {
     textarea.addEventListener("input", updateCharCount);
   });
@@ -149,4 +156,26 @@ document.addEventListener("DOMContentLoaded", () => {
 function clearField(textareaId) {
   document.getElementById(textareaId).value = "";
   updateCharCount(); // Atualiza o contador após limpar
+}
+
+// Translation functionality
+let currentLanguage = 'pt-BR';
+
+function toggleLanguage() {
+  currentLanguage = currentLanguage === 'pt-BR' ? 'en' : 'pt-BR';
+  updateLanguage();
+  localStorage.setItem('language', currentLanguage);
+}
+
+function updateLanguage() {
+  const toggleLabel = document.querySelector('.toggle-label');
+  const languageToggle = document.getElementById('languageToggle');
+  
+  if (currentLanguage === 'en') {
+    toggleLabel.textContent = '🇺🇸';
+    languageToggle.checked = true;
+  } else {
+    toggleLabel.textContent = '🇧🇷';
+    languageToggle.checked = false;
+  }
 }
