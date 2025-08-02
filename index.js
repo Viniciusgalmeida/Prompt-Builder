@@ -101,9 +101,9 @@ function insertText(id, text) {
 
   // Adiciona quebra de linha se já houver conteúdo
   if (textarea.value) {
-    textarea.value += "\n" + translatedText;
+    textarea.value += "\n" + translatedText + " ";
   } else {
-    textarea.value = translatedText;
+    textarea.value = translatedText + " ";
   }
 
   adjustHeight(textarea);
