@@ -39,10 +39,10 @@ function clearField(id) {
 }
 
 function clearAllFields() {
-  document.getElementById("prompt1").value = "Instrução: ";
-  document.getElementById("prompt2").value = "Formato da resposta: ";
-  document.getElementById("prompt3").value = "Atenção: ";
-  document.getElementById("prompt4").value = "Contexto: ";
+  document.getElementById("prompt1").value = getTranslation('default_instrucao');
+  document.getElementById("prompt2").value = getTranslation('default_formato');
+  document.getElementById("prompt3").value = getTranslation('default_atencao');
+  document.getElementById("prompt4").value = getTranslation('default_contexto');
   updateCharCount();
 }
 
@@ -129,7 +129,105 @@ function updateCharCount() {
   });
   document.getElementById(
     "char-counter"
-  ).innerText = `Caracteres: ${totalChars}`;
+  ).innerText = `${getTranslation('caracteres')} ${totalChars}`;
+}
+
+// Update select options for all dropdowns
+function updateSelectOptions() {
+  // Prompt 1 (Instrução) select options
+  const select1 = document.querySelector('select[onchange="insertText(\'prompt1\', this.value)"]');
+  if (select1) {
+    select1.options[0].text = getTranslation('direcionamentos_ia');
+    select1.options[1].text = getTranslation('especialista_geral');
+    select1.options[2].text = getTranslation('especialista_programacao');
+    select1.options[3].text = getTranslation('codigo_limpo');
+    select1.options[4].text = getTranslation('explicar_codigo');
+    select1.options[5].text = getTranslation('varias_perguntas');
+    select1.options[6].text = getTranslation('diferencas');
+    select1.options[7].text = getTranslation('pros_contras');
+  }
+  
+  // Prompt 2 (Formato da resposta) select options
+  const select2 = document.querySelector('select[onchange="insertText(\'prompt2\', this.value)"]');
+  if (select2) {
+    select2.options[0].text = getTranslation('direcionamentos_ia');
+    select2.options[1].text = getTranslation('topicos');
+    select2.options[2].text = getTranslation('passo_a_passo');
+    select2.options[3].text = getTranslation('tabela');
+    select2.options[4].text = getTranslation('arquivo_xlsx');
+    select2.options[5].text = getTranslation('apenas_codigo');
+    select2.options[6].text = getTranslation('portugues_brasileiro');
+    select2.options[7].text = getTranslation('crianca_10_anos');
+    select2.options[8].text = getTranslation('todo_list');
+  }
+  
+  // Prompt 3 (Atenção) select options
+  const select3 = document.querySelector('select[onchange="insertText(\'prompt3\', this.value)"]');
+  if (select3) {
+    select3.options[0].text = getTranslation('direcionamentos_ia');
+    select3.options[1].text = getTranslation('realce_negrito');
+    select3.options[2].text = getTranslation('realce_crase');
+    select3.options[3].text = getTranslation('mais_informacoes');
+    select3.options[4].text = getTranslation('resumidamente');
+    select3.options[5].text = getTranslation('detalhadamente');
+    select3.options[6].text = getTranslation('fontes');
+    select3.options[7].text = getTranslation('nao_bajule');
+    select3.options[8].text = getTranslation('resumo_final');
+  }
+  
+  // Prompt 4 (Contexto) select options
+  const select4 = document.querySelector('select[onchange="insertText(\'prompt4\', this.value)"]');
+  if (select4) {
+    select4.options[0].text = getTranslation('direcionamentos_ia');
+    select4.options[1].text = getTranslation('estudando');
+    select4.options[2].text = getTranslation('conhecimento_intermediario');
+    select4.options[3].text = getTranslation('conhecimento_avancado');
+    select4.options[4].text = getTranslation('artigo_cientifico');
+    select4.options[5].text = getTranslation('post_linkedin');
+  }
+}
+
+// Update popup content
+function updatePopupContent() {
+  const popup1 = document.getElementById('popup1');
+  const popup2 = document.getElementById('popup2');
+  const popup3 = document.getElementById('popup3');
+  const popup4 = document.getElementById('popup4');
+  
+  if (popup1) {
+    popup1.querySelector('p').textContent = getTranslation('popup_instrucao');
+  }
+  if (popup2) {
+    popup2.querySelector('p').textContent = getTranslation('popup_formato');
+  }
+  if (popup3) {
+    popup3.querySelector('p').textContent = getTranslation('popup_atencao');
+  }
+  if (popup4) {
+    popup4.querySelector('p').textContent = getTranslation('popup_contexto');
+  }
+}
+
+// Update textarea default values
+function updateTextareaDefaults() {
+  const prompt1 = document.getElementById('prompt1');
+  const prompt2 = document.getElementById('prompt2');
+  const prompt3 = document.getElementById('prompt3');
+  const prompt4 = document.getElementById('prompt4');
+  
+  // Only update if the textarea has the default value or is empty
+  if (prompt1 && (prompt1.value === 'Instrução: ' || prompt1.value === 'Instruction: ' || prompt1.value === '')) {
+    prompt1.value = getTranslation('default_instrucao');
+  }
+  if (prompt2 && (prompt2.value === 'Formato da resposta: ' || prompt2.value === 'Response format: ' || prompt2.value === '')) {
+    prompt2.value = getTranslation('default_formato');
+  }
+  if (prompt3 && (prompt3.value === 'Atenção: ' || prompt3.value === 'Attention: ' || prompt3.value === '')) {
+    prompt3.value = getTranslation('default_atencao');
+  }
+  if (prompt4 && (prompt4.value === 'Contexto: ' || prompt4.value === 'Context: ' || prompt4.value === '')) {
+    prompt4.value = getTranslation('default_contexto');
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -138,6 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (savedLanguage) {
     currentLanguage = savedLanguage;
     updateLanguage();
+    translatePage();
   }
 
   document.querySelectorAll("textarea").forEach((textarea) => {
@@ -161,10 +260,180 @@ function clearField(textareaId) {
 // Translation functionality
 let currentLanguage = 'pt-BR';
 
+// Translation mapping object
+const translations = {
+  'pt-BR': {
+    // Labels
+    'instrucao': 'Instrução:',
+    'formato_resposta': 'Formato da resposta:',
+    'atencao': 'Atenção:',
+    'contexto': 'Contexto:',
+    
+    // Buttons
+    'apaga_tudo': 'Apaga Tudo',
+    'copia_tudo': 'Copia Tudo',
+    'caracteres': 'Caracteres:',
+    
+    // Section headers
+    'links_ias': 'Links para IAs',
+    'meus_links': 'Meus links',
+    
+    // Select options - Instrução
+    'direcionamentos_ia': 'Direcionamentos para IA',
+    'especialista_geral': 'Agora você é um especialista em... (adicione uma especialidade)',
+    'especialista_programacao': 'Agora você é um especialista em programação.',
+    'codigo_limpo': 'Deixe este código mais limpo e rápido.',
+    'explicar_codigo': 'Me explique este código.',
+    'varias_perguntas': 'Aguarde pois irei fazer várias perguntas sobre...',
+    'diferencas': 'Quais são as diferenças entre...',
+    'pros_contras': 'Quais são os prós e contras?',
+    
+    // Select options - Formato da resposta
+    'topicos': 'Responda em tópicos',
+    'passo_a_passo': 'Explique com um passo a passo.',
+    'tabela': 'Retorne uma tabela',
+    'arquivo_xlsx': 'Retorne um arquivo .xlsx',
+    'apenas_codigo': 'Retorne apenas o código',
+    'portugues_brasileiro': 'Responda em português brasileiro',
+    'crianca_10_anos': 'Resposta para uma criança de 10 anos',
+    'todo_list': 'Responda com uma To-Do list pois irei copiar e colar no notion.',
+    
+    // Select options - Atenção
+    'realce_negrito': 'Realce em negrito as partes importantes da sua resposta.',
+    'realce_crase': 'Realce com ` ` (crase) as partes mais importantes da sua resposta.',
+    'mais_informacoes': 'Caso necessite de mais informações não responda ainda e me pergunte o que precisa.',
+    'resumidamente': 'Responda resumidamente',
+    'detalhadamente': 'Me explique detalhadamente.',
+    'fontes': 'Me dê as fontes da sua resposta.',
+    'nao_bajule': 'Não me bajule.',
+    'resumo_final': 'No final da sua resposta faça um resumo.',
+    
+    // Select options - Contexto
+    'estudando': 'Estou estudando sobre o assunto.',
+    'conhecimento_intermediario': 'Tenho conhecimento INTERMEDIÁRIO no assunto.',
+    'conhecimento_avancado': 'Tenho conhecimento AVANÇADO no assunto.',
+    'artigo_cientifico': 'Estou escrevendo um artigo científico.',
+    'post_linkedin': 'Estou escrevendo um post para o linkedin.',
+    
+    // Popup content
+    'popup_instrucao': 'Transforme a IA em uma especialista em algo e na sequência peça a ela para que faça o que você precisa.\n\nExemplo:\n"Agora você é um especialista em nutrição. Crie uma receita variada e saudável para o café da manhã durante a semana."',
+    'popup_formato': 'Defina um formato para a IA te responder. Pode ser uma resposta resumida, tabela, lista com bullet points, etc...\n\nExemplo:\n"Responda em formato de tabela."',
+    'popup_atencao': 'Estabeleça critérios para a IA.\n\nExemplo:\n"Marque em negrito as partes mais importantes da sua resposta."',
+    'popup_contexto': 'Dê o contexto para que a IA possa responder de forma mais precisa.\n\nExemplo:\n"Estou escrevendo um artigo científico."',
+    
+    // Default textarea values
+    'default_instrucao': 'Instrução: ',
+    'default_formato': 'Formato da resposta: ',
+    'default_atencao': 'Atenção: ',
+    'default_contexto': 'Contexto: '
+  },
+  
+  'en': {
+    // Labels
+    'instrucao': 'Instruction:',
+    'formato_resposta': 'Response format:',
+    'atencao': 'Attention:',
+    'contexto': 'Context:',
+    
+    // Buttons
+    'apaga_tudo': 'Clear All',
+    'copia_tudo': 'Copy All',
+    'caracteres': 'Characters:',
+    
+    // Section headers
+    'links_ias': 'AI Links',
+    'meus_links': 'My Links',
+    
+    // Select options - Instruction
+    'direcionamentos_ia': 'AI Directions',
+    'especialista_geral': 'Now you are an expert in... (add a specialty)',
+    'especialista_programacao': 'Now you are an expert in programming.',
+    'codigo_limpo': 'Make this code cleaner and faster.',
+    'explicar_codigo': 'Explain this code to me.',
+    'varias_perguntas': 'Wait as I will ask several questions about...',
+    'diferencas': 'What are the differences between...',
+    'pros_contras': 'What are the pros and cons?',
+    
+    // Select options - Response format
+    'topicos': 'Answer in bullet points',
+    'passo_a_passo': 'Explain step by step.',
+    'tabela': 'Return a table',
+    'arquivo_xlsx': 'Return an .xlsx file',
+    'apenas_codigo': 'Return only the code',
+    'portugues_brasileiro': 'Answer in Brazilian Portuguese',
+    'crianca_10_anos': 'Answer as if explaining to a 10-year-old child',
+    'todo_list': 'Answer with a To-Do list as I will copy and paste it into Notion.',
+    
+    // Select options - Attention
+    'realce_negrito': 'Highlight important parts of your response in bold.',
+    'realce_crase': 'Highlight the most important parts of your response with ` ` (backticks).',
+    'mais_informacoes': 'If you need more information, don\'t answer yet and ask me what you need.',
+    'resumidamente': 'Answer briefly',
+    'detalhadamente': 'Explain to me in detail.',
+    'fontes': 'Give me the sources of your response.',
+    'nao_bajule': 'Don\'t flatter me.',
+    'resumo_final': 'At the end of your response, make a summary.',
+    
+    // Select options - Context
+    'estudando': 'I\'m studying about the subject.',
+    'conhecimento_intermediario': 'I have INTERMEDIATE knowledge of the subject.',
+    'conhecimento_avancado': 'I have ADVANCED knowledge of the subject.',
+    'artigo_cientifico': 'I\'m writing a scientific article.',
+    'post_linkedin': 'I\'m writing a LinkedIn post.',
+    
+    // Popup content
+    'popup_instrucao': 'Turn the AI into an expert in something and then ask it to do what you need.\n\nExample:\n"Now you are a nutrition expert. Create a varied and healthy breakfast recipe for the week."',
+    'popup_formato': 'Define a format for the AI to respond to you. It can be a brief response, table, bullet point list, etc...\n\nExample:\n"Answer in table format."',
+    'popup_atencao': 'Establish criteria for the AI.\n\nExample:\n"Mark the most important parts of your response in bold."',
+    'popup_contexto': 'Give the context so the AI can respond more accurately.\n\nExample:\n"I\'m writing a scientific article."',
+    
+    // Default textarea values
+    'default_instrucao': 'Instruction: ',
+    'default_formato': 'Response format: ',
+    'default_atencao': 'Attention: ',
+    'default_contexto': 'Context: '
+  }
+};
+
 function toggleLanguage() {
   currentLanguage = currentLanguage === 'pt-BR' ? 'en' : 'pt-BR';
   updateLanguage();
+  translatePage();
   localStorage.setItem('language', currentLanguage);
+}
+
+// Helper function to get translation
+function getTranslation(key) {
+  return translations[currentLanguage][key] || key;
+}
+
+// Main translation function to update all page content
+function translatePage() {
+  // Update labels
+  document.querySelector('label[for="prompt1"]').textContent = getTranslation('instrucao');
+  document.querySelector('label[for="prompt2"]').textContent = getTranslation('formato_resposta');
+  document.querySelector('label[for="prompt3"]').textContent = getTranslation('atencao');
+  document.querySelector('label[for="prompt4"]').textContent = getTranslation('contexto');
+  
+  // Update buttons
+  document.querySelector('.clear-all-btn').textContent = getTranslation('apaga_tudo');
+  document.querySelector('.copy-all-btn').textContent = getTranslation('copia_tudo');
+  
+  // Update character counter
+  updateCharCount();
+  
+  // Update section headers
+  document.querySelectorAll('h3')[0].textContent = getTranslation('links_ias');
+  document.querySelectorAll('h3')[1].textContent = getTranslation('meus_links');
+  
+  // Update select options
+  updateSelectOptions();
+  
+  // Update popup content
+  updatePopupContent();
+  
+  // Update textarea default values
+  updateTextareaDefaults();
 }
 
 function updateLanguage() {
