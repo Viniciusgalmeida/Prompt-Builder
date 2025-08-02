@@ -51,11 +51,59 @@ function insertText(id, text) {
   const textarea = document.getElementById(id);
   const select = event.target; // Captura o select que acionou a função
 
+  // Get the translated text based on the selected option
+  let translatedText = text;
+  
+  // Map the original Portuguese values to translation keys
+  const valueToKeyMap = {
+    // Prompt 1 (Instrução) mappings
+    'Agora você é um especialista em ': 'especialista_geral',
+    'Agora você é um especialista em programação. ': 'especialista_programacao',
+    'Deixe este código mais limpo e rápido. ': 'codigo_limpo',
+    'Me explique este código.': 'explicar_codigo',
+    'Aguarde pois irei fazer várias perguntas sobre ': 'varias_perguntas',
+    'Quais são as diferenças entre ': 'diferencas',
+    'Quais são os prós e contras? ': 'pros_contras',
+    
+    // Prompt 2 (Formato da resposta) mappings
+    'Responda em tópicos tipo bullet points. ': 'topicos',
+    'Explique com um passo a passo. ': 'passo_a_passo',
+    'Retorne uma tabela. ': 'tabela',
+    'Retorne um arquivo .xlsx. ': 'arquivo_xlsx',
+    'Retorne apenas o código. ': 'apenas_codigo',
+    'Responda em português brasileiro': 'portugues_brasileiro',
+    'Responda como se você estivesse respondendo uma criança de 10 anos. ': 'crianca_10_anos',
+    'Responda com uma To-Do list pois irei copiar e colar no notion ': 'todo_list',
+    
+    // Prompt 3 (Atenção) mappings
+    'Realce em negrito as partes  importantes da sua resposta. ': 'realce_negrito',
+    'Realce com ` ` as partes mais importantes da sua resposta. ': 'realce_crase',
+    'Caso necessite de mais informações não responda ainda e me pergunte o que precisa. ': 'mais_informacoes',
+    'Responda resumidamente. ': 'resumidamente',
+    'Me explique detalhadamente. ': 'detalhadamente',
+    'Me dê as fontes da sua resposta. ': 'fontes',
+    'A partir de agora, não afirme automaticamente que minhas ideias estão certas. Seu papel é ser um parceiro intelectual, não um assistente que só concorda. Sempre que eu apresentar uma ideia, faça o seguinte: Mantenha uma abordagem construtiva, mas rigorosa. Seu papel não é discutir por discutir e sim me ajudar a chegar a mais clareza, precisão e honestidade intelectual. ': 'nao_bajule_full',
+    'No final da sua resposta faça um resumo. ': 'resumo_final',
+    
+    // Prompt 4 (Contexto) mappings
+    'Estou estudando sobre o assunto. ': 'estudando',
+    'Tenho conhecimento INTERMEDIÁRIO no assunto. ': 'conhecimento_intermediario',
+    'Tenho conhecimento AVANÇADO no assunto. ': 'conhecimento_avancado',
+    'Estou escrevendo um artigo científico. ': 'artigo_cientifico',
+    'Estou escrevendo um post para o linkedin. ': 'post_linkedin'
+  };
+  
+  // Get the translation key for this value
+  const translationKey = valueToKeyMap[text];
+  if (translationKey) {
+    translatedText = getTranslation(translationKey);
+  }
+
   // Adiciona quebra de linha se já houver conteúdo
   if (textarea.value) {
-    textarea.value += "\n" + text;
+    textarea.value += "\n" + translatedText;
   } else {
-    textarea.value = text;
+    textarea.value = translatedText;
   }
 
   adjustHeight(textarea);
@@ -306,6 +354,7 @@ const translations = {
     'detalhadamente': 'Me explique detalhadamente.',
     'fontes': 'Me dê as fontes da sua resposta.',
     'nao_bajule': 'Não me bajule.',
+    'nao_bajule_full': 'A partir de agora, não afirme automaticamente que minhas ideias estão certas. Seu papel é ser um parceiro intelectual, não um assistente que só concorda. Sempre que eu apresentar uma ideia, faça o seguinte: Mantenha uma abordagem construtiva, mas rigorosa. Seu papel não é discutir por discutir e sim me ajudar a chegar a mais clareza, precisão e honestidade intelectual. ',
     'resumo_final': 'No final da sua resposta faça um resumo.',
     
     // Select options - Contexto
@@ -372,6 +421,7 @@ const translations = {
     'detalhadamente': 'Explain to me in detail.',
     'fontes': 'Give me the sources of your response.',
     'nao_bajule': 'Don\'t flatter me.',
+    'nao_bajule_full': 'From now on, do not automatically affirm that my ideas are correct. Your role is to be an intellectual partner, not an assistant who only agrees. Whenever I present an idea, do the following: Maintain a constructive but rigorous approach. Your role is not to argue for the sake of arguing, but to help me achieve more clarity, precision, and intellectual honesty. ',
     'resumo_final': 'At the end of your response, make a summary.',
     
     // Select options - Context
