@@ -193,6 +193,17 @@ function updateSelectOptions() {
     select1.options[5].text = getTranslation('varias_perguntas');
     select1.options[6].text = getTranslation('diferencas');
     select1.options[7].text = getTranslation('pros_contras');
+
+    const paretoPromptPt = document.getElementById('pareto-prompt-pt');
+    const paretoPromptEn = document.getElementById('pareto-prompt-en');
+
+    if (currentLanguage === 'en') {
+      if (paretoPromptPt) paretoPromptPt.style.display = 'none';
+      if (paretoPromptEn) paretoPromptEn.style.display = 'block';
+    } else {
+      if (paretoPromptPt) paretoPromptPt.style.display = 'block';
+      if (paretoPromptEn) paretoPromptEn.style.display = 'none';
+    }
   }
   
   // Prompt 2 (Formato da resposta) select options
@@ -335,6 +346,7 @@ const translations = {
     'varias_perguntas': 'Aguarde pois irei fazer várias perguntas sobre ',
     'diferencas': 'Quais são as diferenças entre ',
     'pros_contras': 'Quais são os prós e contras?',
+    'pareto_prompt': 'Aplique a regra de Pareto nestes conteúdos...',
     
     // Select options - Formato da resposta
     'topicos': 'Responda em tópicos',
@@ -402,6 +414,7 @@ const translations = {
     'varias_perguntas': 'Wait as I will ask several questions about ',
     'diferencas': 'What are the differences between ',
     'pros_contras': 'What are the pros and cons?',
+    'pareto_prompt': 'Apply the Pareto principle to this content...',
     
     // Select options - Response format
     'topicos': 'Answer in bullet points',
