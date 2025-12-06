@@ -6,10 +6,27 @@ function adjustHeight(textarea) {
 
 function copyToClipboard() {
   const textareas = document.querySelectorAll(".global-container textarea");
+  const defaultTextKeys = {
+    'prompt1': 'default_instrucao',
+    'prompt2': 'default_formato',
+    'prompt3': 'default_atencao',
+    'prompt4': 'default_contexto'
+  };
+
   const texts = Array.from(textareas)
-    .map((textarea) => textarea.value.trim()) // Remove espaços extras
-    .filter((text) => text.length > 0) // Remove campos vazios
-    .join("\n\n"); // Junta com espaçamento entre prompts
+    .map((textarea) => {
+      const defaultText = getTranslation(defaultTextKeys[textarea.id]);
+      const currentValue = textarea.value;
+      
+      // If the trimmed current value is different from the trimmed default value,
+      // it means there is some user text.
+      if (currentValue.trim() !== defaultText.trim()) {
+        return currentValue.trim();
+      }
+      return null;
+    })
+    .filter((text) => text) // Remove null/empty entries
+    .join("\n\n");
 
   if (texts.length === 0) {
     alert("Não há nada para copiar!");
