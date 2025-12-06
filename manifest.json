@@ -1,0 +1,20 @@
+{
+  "name": "Prompt Builder",
+  "short_name": "Builder",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#2C3639",
+  "theme_color": "#2C3639",
+  "icons": [
+    {
+      "src": "src/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "src/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
