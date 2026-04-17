@@ -5,10 +5,23 @@ function adjustHeight(textarea) {
 }
 
 function copyToClipboard() {
+  const defaultKeys = {
+    promptRole: 'default_papel_ia',
+    prompt1: 'default_instrucao',
+    prompt2: 'default_formato',
+    prompt3: 'default_atencao',
+    prompt4: 'default_contexto',
+  };
+
   const textareas = document.querySelectorAll(".global-container textarea");
   const texts = Array.from(textareas)
-    .map((textarea) => textarea.value.trim()) // Remove espaços extras
-    .filter((text) => text.length > 0) // Remove campos vazios
+    .filter((textarea) => {
+      const val = textarea.value.trim();
+      if (!val) return false;
+      const defaultVal = getTranslation(defaultKeys[textarea.id] || '').trim();
+      return val !== defaultVal;
+    })
+    .map((textarea) => textarea.value.trim())
     .join("\n\n"); // Junta com espaçamento entre prompts
 
   if (texts.length === 0) {
