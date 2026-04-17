@@ -39,6 +39,7 @@ function clearField(id) {
 }
 
 function clearAllFields() {
+  document.getElementById("promptRole").value = getTranslation('default_papel_ia');
   document.getElementById("prompt1").value = getTranslation('default_instrucao');
   document.getElementById("prompt2").value = getTranslation('default_formato');
   document.getElementById("prompt3").value = getTranslation('default_atencao');
@@ -150,9 +151,18 @@ function closePopup4() {
   document.getElementById("popup4").style.display = "none";
 }
 
+// FUNÇÃO POP-UP PAPEL DA IA
+function openPopupRole() {
+  document.getElementById("popupRole").style.display = "flex";
+}
+
+function closePopupRole() {
+  document.getElementById("popupRole").style.display = "none";
+}
+
 // Fechar pop-up ao clicar fora do conteúdo ou pressionar "Esc"
 document.addEventListener("click", function (event) {
-  ["popup1", "popup2", "popup3", "popup4"].forEach((id) => {
+  ["popupRole", "popup1", "popup2", "popup3", "popup4"].forEach((id) => {
     let popup = document.getElementById(id);
     if (event.target === popup) {
       popup.style.display = "none";
@@ -162,7 +172,7 @@ document.addEventListener("click", function (event) {
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "Escape") {
-    ["popup1", "popup2", "popup3", "popup4"].forEach((id) => {
+    ["popupRole", "popup1", "popup2", "popup3", "popup4"].forEach((id) => {
       document.getElementById(id).style.display = "none";
     });
   }
@@ -182,17 +192,23 @@ function updateCharCount() {
 
 // Update select options for all dropdowns
 function updateSelectOptions() {
+  // Papel da IA select options
+  const selectRole = document.querySelector('select[onchange="insertText(\'promptRole\', this.value)"]');
+  if (selectRole) {
+    selectRole.options[0].text = getTranslation('direcionamentos_ia');
+    selectRole.options[1].text = getTranslation('especialista_geral');
+    selectRole.options[2].text = getTranslation('especialista_programacao');
+  }
+
   // Prompt 1 (Instrução) select options
   const select1 = document.querySelector('select[onchange="insertText(\'prompt1\', this.value)"]');
   if (select1) {
     select1.options[0].text = getTranslation('direcionamentos_ia');
-    select1.options[1].text = getTranslation('especialista_geral');
-    select1.options[2].text = getTranslation('especialista_programacao');
-    select1.options[3].text = getTranslation('codigo_limpo');
-    select1.options[4].text = getTranslation('explicar_codigo');
-    select1.options[5].text = getTranslation('varias_perguntas');
-    select1.options[6].text = getTranslation('diferencas');
-    select1.options[7].text = getTranslation('pros_contras');
+    select1.options[1].text = getTranslation('codigo_limpo');
+    select1.options[2].text = getTranslation('explicar_codigo');
+    select1.options[3].text = getTranslation('varias_perguntas');
+    select1.options[4].text = getTranslation('diferencas');
+    select1.options[5].text = getTranslation('pros_contras');
 
     const paretoPromptPt = document.getElementById('pareto-prompt-pt');
     const paretoPromptEn = document.getElementById('pareto-prompt-en');
@@ -248,11 +264,15 @@ function updateSelectOptions() {
 
 // Update popup content
 function updatePopupContent() {
+  const popupRole = document.getElementById('popupRole');
   const popup1 = document.getElementById('popup1');
   const popup2 = document.getElementById('popup2');
   const popup3 = document.getElementById('popup3');
   const popup4 = document.getElementById('popup4');
-  
+
+  if (popupRole) {
+    popupRole.querySelector('p').textContent = getTranslation('popup_papel_ia');
+  }
   if (popup1) {
     popup1.querySelector('p').textContent = getTranslation('popup_instrucao');
   }
@@ -269,12 +289,16 @@ function updatePopupContent() {
 
 // Update textarea default values
 function updateTextareaDefaults() {
+  const promptRole = document.getElementById('promptRole');
   const prompt1 = document.getElementById('prompt1');
   const prompt2 = document.getElementById('prompt2');
   const prompt3 = document.getElementById('prompt3');
   const prompt4 = document.getElementById('prompt4');
   
   // Only update if the textarea has the default value or is empty
+  if (promptRole && (promptRole.value === 'Papel da IA: ' || promptRole.value === 'AI Role: ' || promptRole.value === '')) {
+    promptRole.value = getTranslation('default_papel_ia');
+  }
   if (prompt1 && (prompt1.value === 'Instrução: ' || prompt1.value === 'Instruction: ' || prompt1.value === '')) {
     prompt1.value = getTranslation('default_instrucao');
   }
@@ -323,6 +347,7 @@ let currentLanguage = 'pt-BR';
 const translations = {
   'pt-BR': {
     // Labels
+    'papel_ia': 'Papel da IA:',
     'instrucao': 'Instrução:',
     'formato_resposta': 'Formato da resposta:',
     'atencao': 'Atenção:',
@@ -377,12 +402,14 @@ const translations = {
     'post_linkedin': 'Estou escrevendo um post para o linkedin.',
     
     // Popup content
-    'popup_instrucao': 'Transforme a IA em uma especialista em algo e na sequência peça a ela para que faça o que você precisa.\n\nExemplo:\n"Agora você é um especialista em nutrição. Crie uma receita variada e saudável para o café da manhã durante a semana."',
+    'popup_papel_ia': 'Defina o papel que a IA deve assumir antes de responder.\n\nExemplo:\n"Agora você é um especialista em nutrição. Crie uma receita variada e saudável para o café da manhã durante a semana."',
+    'popup_instrucao': 'Dê uma instrução direta à IA sobre o que ela deve fazer.\n\nExemplos:\n"Me explique este código."\n"Deixe este código mais limpo e rápido."',
     'popup_formato': 'Defina um formato para a IA te responder. Pode ser uma resposta resumida, tabela, lista com bullet points, etc...\n\nExemplo:\n"Responda em formato de tabela."',
     'popup_atencao': 'Estabeleça critérios para a IA.\n\nExemplo:\n"Marque em negrito as partes mais importantes da sua resposta."',
     'popup_contexto': 'Dê o contexto para que a IA possa responder de forma mais precisa.\n\nExemplo:\n"Estou escrevendo um artigo científico."',
     
     // Default textarea values
+    'default_papel_ia': 'Papel da IA: ',
     'default_instrucao': 'Instrução: ',
     'default_formato': 'Formato da resposta: ',
     'default_atencao': 'Atenção: ',
@@ -391,6 +418,7 @@ const translations = {
   
   'en': {
     // Labels
+    'papel_ia': 'AI Role:',
     'instrucao': 'Instruction:',
     'formato_resposta': 'Response format:',
     'atencao': 'Attention:',
@@ -445,12 +473,14 @@ const translations = {
     'post_linkedin': 'I\'m writing a LinkedIn post.',
     
     // Popup content
-    'popup_instrucao': 'Turn the AI into an expert in something and then ask it to do what you need.\n\nExample:\n"Now you are a nutrition expert. Create a varied and healthy breakfast recipe for the week."',
+    'popup_papel_ia': 'Define the role the AI should take before responding.\n\nExample:\n"Now you are a nutrition expert. Create a varied and healthy breakfast recipe for the week."',
+    'popup_instrucao': 'Give the AI a direct instruction about what it should do.\n\nExamples:\n"Explain this code to me."\n"Make this code cleaner and faster."',
     'popup_formato': 'Define a format for the AI to respond to you. It can be a brief response, table, bullet point list, etc...\n\nExample:\n"Answer in table format."',
     'popup_atencao': 'Establish criteria for the AI.\n\nExample:\n"Mark the most important parts of your response in bold."',
     'popup_contexto': 'Give the context so the AI can respond more accurately.\n\nExample:\n"I\'m writing a scientific article."',
     
     // Default textarea values
+    'default_papel_ia': 'AI Role: ',
     'default_instrucao': 'Instruction: ',
     'default_formato': 'Response format: ',
     'default_atencao': 'Attention: ',
@@ -473,6 +503,7 @@ function getTranslation(key) {
 // Main translation function to update all page content
 function translatePage() {
   // Update labels
+  document.querySelector('label[for="promptRole"]').textContent = getTranslation('papel_ia');
   document.querySelector('label[for="prompt1"]').textContent = getTranslation('instrucao');
   document.querySelector('label[for="prompt2"]').textContent = getTranslation('formato_resposta');
   document.querySelector('label[for="prompt3"]').textContent = getTranslation('atencao');

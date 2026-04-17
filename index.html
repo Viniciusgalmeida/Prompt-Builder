@@ -164,11 +164,13 @@ alt="Codewars"
 
 
     <div class="global-container">
+
+      <!-- PAPEL DA IA -->
       <div class="prompt-bundle">
         <div class="prompt-container">
-          <label for="prompt1">Instrução:</label>
+          <label for="promptRole">Papel da IA:</label>
 
-          <select onchange="insertText('prompt1', this.value)">
+          <select onchange="insertText('promptRole', this.value)">
             <option value="">Direcionamentos para IA</option>
             <option value="Agora você é um especialista em ">
               Agora você é um especialista em... (adicione uma especialidade)
@@ -176,6 +178,39 @@ alt="Codewars"
             <option value="Agora você é um especialista em programação. ">
               Agora você é um especialista em programação.
             </option>
+          </select>
+
+          <div class="popup-clearbtn-bundle">
+            <!-- POP-UP -->
+            <button class="popup-btn" onclick="openPopupRole()">?</button>
+
+            <div id="popupRole" class="popup">
+              <div class="popup-content">
+                <span class="close-btn" onclick="closePopupRole()">&times;</span>
+                <p>
+                  Defina o papel que a IA deve assumir antes de responder.
+                  <br /><br />
+                  Exemplo:
+                  <br />
+                  "Agora você é um especialista em nutrição. Crie uma receita
+                  variada e saudável para o café da manhã durante a semana."
+                </p>
+              </div>
+            </div>
+            <!-- FIM DO POP-UP -->
+
+            <button class="clear-btn" onclick="clearField('promptRole')">X</button>
+          </div>
+        </div>
+        <textarea id="promptRole" oninput="adjustHeight(this)">Papel da IA: </textarea>
+      </div>
+
+      <div class="prompt-bundle">
+        <div class="prompt-container">
+          <label for="prompt1">Instrução:</label>
+
+          <select onchange="insertText('prompt1', this.value)">
+            <option value="">Direcionamentos para IA</option>
             <option value="Deixe este código mais limpo e rápido. ">
               Deixe este código mais limpo e rápido.
             </option>
@@ -203,13 +238,13 @@ alt="Codewars"
               <div class="popup-content">
                 <span class="close-btn" onclick="closePopup1()">&times;</span>
                 <p>
-                  Transforme a IA em uma especialista em algo e na sequência
-                  peça a ela para que faça o que você precisa.
+                  Dê uma instrução direta à IA sobre o que ela deve fazer.
                   <br /><br />
-                  Exemplo:
+                  Exemplos:
                   <br />
-                  "Agora você é um especialista em nutrição. Crie uma receita
-                  variada e saudável para o café da manhã durante a semana."
+                  "Me explique este código."
+                  <br />
+                  "Deixe este código mais limpo e rápido."
                 </p>
               </div>
             </div>
