@@ -217,9 +217,9 @@ function updateSelectOptions() {
   const select1 = document.querySelector('select[onchange="insertText(\'prompt1\', this.value)"]');
   if (select1) {
     select1.options[0].text = getTranslation('direcionamentos_ia');
-    select1.options[1].text = getTranslation('codigo_limpo');
-    select1.options[2].text = getTranslation('explicar_codigo');
-    select1.options[3].text = getTranslation('varias_perguntas');
+    select1.options[1].text = getTranslation('varias_perguntas');
+    select1.options[2].text = getTranslation('codigo_limpo');
+    select1.options[3].text = getTranslation('explicar_codigo');
     select1.options[4].text = getTranslation('diferencas');
     select1.options[5].text = getTranslation('pros_contras');
 
