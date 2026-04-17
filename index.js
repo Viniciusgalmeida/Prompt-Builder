@@ -122,9 +122,11 @@ function insertText(id, text) {
 
   adjustHeight(textarea);
 
-  // Retorna o select para a primeira opção
+  // Retorna o select para a primeira opção e posiciona o cursor no textarea
   setTimeout(() => {
     select.selectedIndex = 0;
+    textarea.focus();
+    textarea.setSelectionRange(textarea.value.length, textarea.value.length);
   }, 1);
 }
 
