@@ -8,12 +8,35 @@ Link: https://simplepromptbuilder.netlify.app/
 
 ## Features
 
-- **Character Counter**: Displays the total number of characters in all prompts.
+- **AI Role (Papel da IA)**: Define the role the AI should take before responding (e.g. "You are an expert in...").
+- **Character Counter**: Displays the total number of characters across all prompt fields.
 - **Clear All Fields**: Resets all prompt fields to their default values.
-- **Copy All Prompts**: Copies all prompts to the clipboard for easy sharing.
+- **Copy All Prompts**: Copies only the fields that were actually filled in to the clipboard.
+- **Keyboard Shortcuts**: `Ctrl+Enter` to copy all, `Ctrl+Delete` to clear all.
+- **Auto-save**: Content is automatically saved to localStorage — survives page reloads and accidental closures.
 - **AI Links**: Quick access buttons to various AI platforms.
 - **Dynamic Textarea**: Automatically adjusts the height of textareas based on content.
+- **Auto-focus**: After selecting a dropdown option, the cursor is placed directly in the textarea.
 - **Pop-up Help**: Provides detailed explanations for each prompt field.
+- **Language Toggle**: Switch between Portuguese (PT-BR) and English (EN).
+- **PWA Support**: Can be installed as a Progressive Web App on desktop and mobile.
+
+## Prompt Fields
+
+| Field | Purpose |
+|---|---|
+| Papel da IA | Define the AI's role or persona |
+| Instrução | Give a direct instruction to the AI |
+| Formato da resposta | Define the desired response format |
+| Atenção | Set criteria or constraints for the response |
+| Contexto | Provide context to improve accuracy |
+
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+|---|---|
+| `Ctrl+Enter` | Copy all filled fields to clipboard |
+| `Ctrl+Delete` | Clear all fields |
 
 ## Installation
 
@@ -30,8 +53,9 @@ Link: https://simplepromptbuilder.netlify.app/
 ## Usage
 
 1. Fill in the prompt fields with your desired instructions, response formats, attention guidelines, and context.
-2. Use the buttons to clear fields, copy prompts, or access AI and personal links.
-3. The character counter will update automatically as you type.
+2. Use the dropdown menus for quick suggestions or type directly in each field.
+3. Click **Copia Tudo** (or `Ctrl+Enter`) to copy all filled fields to the clipboard.
+4. Click **Apaga Tudo** (or `Ctrl+Delete`) to reset all fields.
 
 ## File Structure
 
@@ -45,7 +69,6 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 ## Upgrade Wishlist:
 
-- [ ] Support for different languages.
 - [ ] Possibility to create texts and save them as predefined texts so that they can be added to the prompt.
 - [ ] Enable dark mode.
 - [ ] Create a version of the prompt builder specifically for generating images.
@@ -53,6 +76,10 @@ Contributions are welcome! Please fork the repository and create a pull request 
 - [ ] Create the possibility for the user to log in and have an area with personalized prompts.
 - [ ] ~~Change the character count to word count.~~
 - [x] Insert a favicon.
+- [x] Support for different languages (PT-BR / EN).
+- [x] PWA support.
+- [x] Auto-save content to localStorage.
+- [x] Keyboard shortcuts.
 
 ## License
 
