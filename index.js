@@ -57,6 +57,7 @@ function clearAllFields() {
   document.getElementById("prompt2").value = getTranslation('default_formato');
   document.getElementById("prompt3").value = getTranslation('default_atencao');
   document.getElementById("prompt4").value = getTranslation('default_contexto');
+  TEXTAREA_IDS.forEach((id) => localStorage.removeItem('content_' + id));
   updateCharCount();
 }
 
@@ -340,6 +341,26 @@ function updateTextareaDefaults() {
   }
 }
 
+const TEXTAREA_IDS = ['promptRole', 'prompt1', 'prompt2', 'prompt3', 'prompt4'];
+
+function saveContent() {
+  TEXTAREA_IDS.forEach((id) => {
+    const el = document.getElementById(id);
+    if (el) localStorage.setItem('content_' + id, el.value);
+  });
+}
+
+function restoreContent() {
+  TEXTAREA_IDS.forEach((id) => {
+    const saved = localStorage.getItem('content_' + id);
+    const el = document.getElementById(id);
+    if (el && saved !== null) {
+      el.value = saved;
+      adjustHeight(el);
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   // Load saved language preference
   const savedLanguage = localStorage.getItem('language');
@@ -349,13 +370,22 @@ document.addEventListener("DOMContentLoaded", () => {
     translatePage();
   }
 
+  // Restore last saved content (overrides defaults if user had typed something)
+  restoreContent();
+
   document.querySelectorAll("textarea").forEach((textarea) => {
-    textarea.addEventListener("input", updateCharCount);
+    textarea.addEventListener("input", () => {
+      updateCharCount();
+      saveContent();
+    });
   });
 
   document.querySelectorAll("select").forEach((select) => {
     select.addEventListener("change", () => {
-      setTimeout(updateCharCount, 0);
+      setTimeout(() => {
+        updateCharCount();
+        saveContent();
+      }, 0);
     });
   });
 
@@ -364,6 +394,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function clearField(textareaId) {
   document.getElementById(textareaId).value = "";
+  localStorage.removeItem('content_' + textareaId);
   updateCharCount(); // Atualiza o contador após limpar
 }
 
