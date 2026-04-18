@@ -193,6 +193,18 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
+// Atalhos de teclado: Ctrl+Enter = copiar tudo, Ctrl+Delete = apagar tudo
+document.addEventListener("keydown", function (event) {
+  if (event.ctrlKey && event.key === "Enter") {
+    event.preventDefault();
+    copyToClipboard();
+  }
+  if (event.ctrlKey && event.key === "Delete") {
+    event.preventDefault();
+    clearAllFields();
+  }
+});
+
 // CONTADOR DE CARACTERES -------------------------------------
 
 function updateCharCount() {
