@@ -398,6 +398,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Restore last saved content (overrides defaults if user had typed something)
   restoreContent();
 
+  // Set initial height for all textareas based on their content
+  document.querySelectorAll("textarea").forEach(adjustHeight);
+
   document.querySelectorAll("textarea").forEach((textarea) => {
     textarea.addEventListener("input", () => {
       updateCharCount();
