@@ -57,7 +57,11 @@ function clearAllFields() {
   document.getElementById("prompt2").value = getTranslation('default_formato');
   document.getElementById("prompt3").value = getTranslation('default_atencao');
   document.getElementById("prompt4").value = getTranslation('default_contexto');
-  TEXTAREA_IDS.forEach((id) => localStorage.removeItem('content_' + id));
+  TEXTAREA_IDS.forEach((id) => {
+    localStorage.removeItem('content_' + id);
+    const el = document.getElementById(id);
+    if (el) adjustHeight(el);
+  });
   updateCharCount();
 }
 
