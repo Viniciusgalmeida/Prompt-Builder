@@ -242,17 +242,23 @@ function updateSelectOptions() {
     const paretoPromptEn = document.getElementById('pareto-prompt-en');
     const questionsPromptPt = document.getElementById('questions-prompt-pt');
     const questionsPromptEn = document.getElementById('questions-prompt-en');
+    const helpProblemPt = document.getElementById('help-problem-pt');
+    const helpProblemEn = document.getElementById('help-problem-en');
 
     if (currentLanguage === 'en') {
       if (paretoPromptPt) paretoPromptPt.style.display = 'none';
       if (paretoPromptEn) paretoPromptEn.style.display = 'block';
       if (questionsPromptPt) questionsPromptPt.style.display = 'none';
       if (questionsPromptEn) questionsPromptEn.style.display = 'block';
+      if (helpProblemPt) helpProblemPt.style.display = 'none';
+      if (helpProblemEn) helpProblemEn.style.display = 'block';
     } else {
       if (paretoPromptPt) paretoPromptPt.style.display = 'block';
       if (paretoPromptEn) paretoPromptEn.style.display = 'none';
       if (questionsPromptPt) questionsPromptPt.style.display = 'block';
       if (questionsPromptEn) questionsPromptEn.style.display = 'none';
+      if (helpProblemPt) helpProblemPt.style.display = 'block';
+      if (helpProblemEn) helpProblemEn.style.display = 'none';
     }
   }
   
