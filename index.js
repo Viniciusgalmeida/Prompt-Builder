@@ -233,10 +233,10 @@ function updateSelectOptions() {
   if (select1) {
     select1.options[0].text = getTranslation('direcionamentos_ia');
     select1.options[1].text = getTranslation('varias_perguntas');
-    select1.options[2].text = getTranslation('codigo_limpo');
-    select1.options[3].text = getTranslation('explicar_codigo');
-    select1.options[4].text = getTranslation('diferencas');
-    select1.options[5].text = getTranslation('pros_contras');
+    select1.options[4].text = getTranslation('codigo_limpo');
+    select1.options[5].text = getTranslation('explicar_codigo');
+    select1.options[6].text = getTranslation('diferencas');
+    select1.options[7].text = getTranslation('pros_contras');
 
     const paretoPromptPt = document.getElementById('pareto-prompt-pt');
     const paretoPromptEn = document.getElementById('pareto-prompt-en');
