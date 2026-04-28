@@ -343,14 +343,27 @@ function updateTextareaDefaults() {
 
 const TEXTAREA_IDS = ['promptRole', 'prompt1', 'prompt2', 'prompt3', 'prompt4'];
 
+function todayKey() {
+  return new Date().toISOString().slice(0, 10); // "YYYY-MM-DD"
+}
+
 function saveContent() {
+  const today = todayKey();
   TEXTAREA_IDS.forEach((id) => {
     const el = document.getElementById(id);
     if (el) localStorage.setItem('content_' + id, el.value);
   });
+  localStorage.setItem('content_date', today);
 }
 
 function restoreContent() {
+  const today = todayKey();
+  const savedDate = localStorage.getItem('content_date');
+  if (savedDate !== today) {
+    TEXTAREA_IDS.forEach((id) => localStorage.removeItem('content_' + id));
+    localStorage.removeItem('content_date');
+    return;
+  }
   TEXTAREA_IDS.forEach((id) => {
     const saved = localStorage.getItem('content_' + id);
     const el = document.getElementById(id);
