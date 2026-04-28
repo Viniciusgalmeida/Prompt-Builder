@@ -73,16 +73,17 @@ hr {
 }
 
 .global-container {
-  height: auto;
+  height: 100vh;
+  overflow-y: auto;
   width: 85%;
   margin: 0 0 0 15%;
-  padding: 5%;
+  padding: 1vh 5%;
   position: relative;
   top: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 h1 {
