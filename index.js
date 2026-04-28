@@ -479,7 +479,7 @@ const translations = {
     'post_linkedin': 'Estou escrevendo um post para o linkedin.',
     
     // Popup content
-    'popup_papel_ia': 'Defina o papel que a IA deve assumir antes de responder.\n\nExemplo:\n"Agora você é um especialista em nutrição. Crie uma receita variada e saudável para o café da manhã durante a semana."',
+    'popup_papel_ia': 'Defina o papel que a IA deve assumir antes de responder.\n\nExemplo:\n"Agora você é um especialista em nutrição."',
     'popup_instrucao': 'Dê uma instrução direta à IA sobre o que ela deve fazer.\n\nExemplos:\n"Me explique este código."\n"Deixe este código mais limpo e rápido."',
     'popup_formato': 'Defina um formato para a IA te responder. Pode ser uma resposta resumida, tabela, lista com bullet points, etc...\n\nExemplo:\n"Responda em formato de tabela."',
     'popup_atencao': 'Estabeleça critérios para a IA.\n\nExemplo:\n"Marque em negrito as partes mais importantes da sua resposta."',
@@ -550,7 +550,7 @@ const translations = {
     'post_linkedin': 'I\'m writing a LinkedIn post.',
     
     // Popup content
-    'popup_papel_ia': 'Define the role the AI should take before responding.\n\nExample:\n"Now you are a nutrition expert. Create a varied and healthy breakfast recipe for the week."',
+    'popup_papel_ia': 'Define the role the AI should take before responding.\n\nExample:\n"Now you are a nutrition expert."',
     'popup_instrucao': 'Give the AI a direct instruction about what it should do.\n\nExamples:\n"Explain this code to me."\n"Make this code cleaner and faster."',
     'popup_formato': 'Define a format for the AI to respond to you. It can be a brief response, table, bullet point list, etc...\n\nExample:\n"Answer in table format."',
     'popup_atencao': 'Establish criteria for the AI.\n\nExample:\n"Mark the most important parts of your response in bold."',
