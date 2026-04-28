@@ -258,6 +258,56 @@ Instrução: </textarea
         >
       </div>
 
+      <!-- PROMPT 4 -->
+      <div class="prompt-bundle">
+        <div class="prompt-container">
+          <label for="prompt4">Contexto:</label>
+          <select onchange="insertText('prompt4', this.value)">
+            <option value="">Direcionamentos para IA</option>
+            <option value="Estou estudando sobre o assunto. ">
+              Estou estudando sobre o assunto.
+            </option>
+            <option value="Tenho conhecimento INTERMEDIÁRIO no assunto. ">
+              Tenho conhecimento INTERMEDIÁRIO no assunto.
+            </option>
+            <option value="Tenho conhecimento AVANÇADO no assunto. ">
+              Tenho conhecimento AVANÇADO no assunto.
+            </option>
+            <option value="Estou escrevendo um artigo científico. ">
+              Estou escrevendo um artigo científico.
+            </option>
+            <option value="Estou escrevendo um post para o linkedin. ">
+              Estou escrevendo um post para o linkedin.
+            </option>
+
+
+          </select>
+          <div class="popup-clearbtn-bundle">
+            <!-- POP-UP -->
+            <button class="popup-btn" onclick="openPopup4()">?</button>
+
+            <div id="popup4" class="popup">
+              <div class="popup-content">
+                <span class="close-btn" onclick="closePopup4()">&times;</span>
+                <p>
+                  Dê o contexto para que a IA possa responder de forma mais
+                  precisa.
+                  <br /><br />
+                  Exemplo:
+                  <br />
+                  "Estou escrevendo um artigo científico."
+                </p>
+              </div>
+            </div>
+            <!-- FIM DO POP-UP -->
+            <button class="clear-btn" onclick="clearField('prompt4')">X</button>
+          </div>
+        </div>
+        <textarea id="prompt4" oninput="adjustHeight(this)">
+Contexto: </textarea
+        >
+      </div>
+
       <!-- PROMPT 2 -->
 
       <div class="prompt-bundle">
@@ -375,55 +425,6 @@ Formato da resposta: </textarea
         <textarea id="prompt3" oninput="adjustHeight(this)">Atenção: </textarea>
       </div>
 
-      <!-- PROMPT 4 -->
-      <div class="prompt-bundle">
-        <div class="prompt-container">
-          <label for="prompt4">Contexto:</label>
-          <select onchange="insertText('prompt4', this.value)">
-            <option value="">Direcionamentos para IA</option>
-            <option value="Estou estudando sobre o assunto. ">
-              Estou estudando sobre o assunto.
-            </option>
-            <option value="Tenho conhecimento INTERMEDIÁRIO no assunto. ">
-              Tenho conhecimento INTERMEDIÁRIO no assunto.
-            </option>
-            <option value="Tenho conhecimento AVANÇADO no assunto. ">
-              Tenho conhecimento AVANÇADO no assunto.
-            </option>
-            <option value="Estou escrevendo um artigo científico. ">
-              Estou escrevendo um artigo científico.
-            </option>
-            <option value="Estou escrevendo um post para o linkedin. ">
-              Estou escrevendo um post para o linkedin.
-            </option>
-
-            
-          </select>
-          <div class="popup-clearbtn-bundle">
-            <!-- POP-UP -->
-            <button class="popup-btn" onclick="openPopup4()">?</button>
-
-            <div id="popup4" class="popup">
-              <div class="popup-content">
-                <span class="close-btn" onclick="closePopup4()">&times;</span>
-                <p>
-                  Dê o contexto para que a IA possa responder de forma mais
-                  precisa.
-                  <br /><br />
-                  Exemplo:
-                  <br />
-                  "Estou escrevendo um artigo científico."
-                </p>
-              </div>
-            </div>
-            <!-- FIM DO POP-UP -->
-            <button class="clear-btn" onclick="clearField('prompt4')">X</button>
-          </div>
-        </div>
-        <textarea id="prompt4" oninput="adjustHeight(this)">
-Contexto: </textarea
-        >
-      </div>
     </div>
 
     <div id="notification" class="notification">Prompt copiado!</div>
