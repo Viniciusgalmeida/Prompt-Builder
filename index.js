@@ -444,7 +444,7 @@ const translations = {
     'contexto': 'Contexto:',
     
     // Buttons
-    'apaga_tudo': 'Apaga Tudo',
+    'apaga_tudo': 'Reset',
     'copia_tudo': 'Copia Tudo',
     'caracteres': 'Caracteres:',
     
@@ -515,7 +515,7 @@ const translations = {
     'contexto': 'Context:',
     
     // Buttons
-    'apaga_tudo': 'Clear All',
+    'apaga_tudo': 'Reset',
     'copia_tudo': 'Copy All',
     'caracteres': 'Characters:',
     
