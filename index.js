@@ -244,6 +244,8 @@ function updateSelectOptions() {
 
     const paretoPromptPt = document.getElementById('pareto-prompt-pt');
     const paretoPromptEn = document.getElementById('pareto-prompt-en');
+    const imageRefinerPromptPt = document.getElementById('image-refiner-prompt-pt');
+    const imageRefinerPromptEn = document.getElementById('image-refiner-prompt-en');
     const questionsPromptPt = document.getElementById('questions-prompt-pt');
     const questionsPromptEn = document.getElementById('questions-prompt-en');
     const helpProblemPt = document.getElementById('help-problem-pt');
@@ -252,6 +254,8 @@ function updateSelectOptions() {
     if (currentLanguage === 'en') {
       if (paretoPromptPt) paretoPromptPt.style.display = 'none';
       if (paretoPromptEn) paretoPromptEn.style.display = 'block';
+      if (imageRefinerPromptPt) imageRefinerPromptPt.style.display = 'none';
+      if (imageRefinerPromptEn) imageRefinerPromptEn.style.display = 'block';
       if (questionsPromptPt) questionsPromptPt.style.display = 'none';
       if (questionsPromptEn) questionsPromptEn.style.display = 'block';
       if (helpProblemPt) helpProblemPt.style.display = 'none';
@@ -259,6 +263,8 @@ function updateSelectOptions() {
     } else {
       if (paretoPromptPt) paretoPromptPt.style.display = 'block';
       if (paretoPromptEn) paretoPromptEn.style.display = 'none';
+      if (imageRefinerPromptPt) imageRefinerPromptPt.style.display = 'block';
+      if (imageRefinerPromptEn) imageRefinerPromptEn.style.display = 'none';
       if (questionsPromptPt) questionsPromptPt.style.display = 'block';
       if (questionsPromptEn) questionsPromptEn.style.display = 'none';
       if (helpProblemPt) helpProblemPt.style.display = 'block';
