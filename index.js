@@ -85,6 +85,10 @@ function insertText(id, text) {
     "Aguarde pois irei fazer várias perguntas sobre ": "varias_perguntas",
     "Quais são as diferenças entre ": "diferencas",
     "Quais são os prós e contras? ": "pros_contras",
+    "Desmonte o conceito em partes: Divida (conceito) em seus componentes essenciais. Explique cada parte em linguagem clara, mostre qual função ela exerce dentro do conceito e como se relaciona com as demais. Ao final, reorganize essas partes para apresentar a estrutura completa do conceito de forma resumida.":
+      "desmontar_conceito",
+    "Volte aos fundamentos do conceito: Quero entender (conceito), mas antes identifique quais conhecimentos prévios são essenciais para compreendê-lo. Organize esses pré-requisitos em uma ordem lógica, do mais básico ao mais avançado, e explique brevemente cada um. Depois, mostre como eles levam ao conceito principal. Não presuma conhecimentos que não tenham sido apresentados.":
+      "fundamentos_conceito",
 
     // Prompt 2 (Formato da resposta) mappings
     "Responda em tópicos tipo bullet points. ": "topicos",
@@ -270,6 +274,18 @@ function updateSelectOptions() {
     );
     const questionsPromptPt = document.getElementById("questions-prompt-pt");
     const questionsPromptEn = document.getElementById("questions-prompt-en");
+    const decomposeConceptPromptPt = document.getElementById(
+      "decompose-concept-prompt-pt",
+    );
+    const decomposeConceptPromptEn = document.getElementById(
+      "decompose-concept-prompt-en",
+    );
+    const fundamentalsPromptPt = document.getElementById(
+      "fundamentals-prompt-pt",
+    );
+    const fundamentalsPromptEn = document.getElementById(
+      "fundamentals-prompt-en",
+    );
     const helpProblemPt = document.getElementById("help-problem-pt");
     const helpProblemEn = document.getElementById("help-problem-en");
 
@@ -282,6 +298,12 @@ function updateSelectOptions() {
       if (imageRefinerPromptEn) imageRefinerPromptEn.style.display = "block";
       if (questionsPromptPt) questionsPromptPt.style.display = "none";
       if (questionsPromptEn) questionsPromptEn.style.display = "block";
+      if (decomposeConceptPromptPt)
+        decomposeConceptPromptPt.style.display = "none";
+      if (decomposeConceptPromptEn)
+        decomposeConceptPromptEn.style.display = "block";
+      if (fundamentalsPromptPt) fundamentalsPromptPt.style.display = "none";
+      if (fundamentalsPromptEn) fundamentalsPromptEn.style.display = "block";
       if (helpProblemPt) helpProblemPt.style.display = "none";
       if (helpProblemEn) helpProblemEn.style.display = "block";
     } else {
@@ -293,6 +315,12 @@ function updateSelectOptions() {
       if (imageRefinerPromptEn) imageRefinerPromptEn.style.display = "none";
       if (questionsPromptPt) questionsPromptPt.style.display = "block";
       if (questionsPromptEn) questionsPromptEn.style.display = "none";
+      if (decomposeConceptPromptPt)
+        decomposeConceptPromptPt.style.display = "block";
+      if (decomposeConceptPromptEn)
+        decomposeConceptPromptEn.style.display = "none";
+      if (fundamentalsPromptPt) fundamentalsPromptPt.style.display = "block";
+      if (fundamentalsPromptEn) fundamentalsPromptEn.style.display = "none";
       if (helpProblemPt) helpProblemPt.style.display = "block";
       if (helpProblemEn) helpProblemEn.style.display = "none";
     }
@@ -524,6 +552,10 @@ const translations = {
     varias_perguntas: "Aguarde pois irei fazer várias perguntas sobre ",
     diferencas: "Quais são as diferenças entre ",
     pros_contras: "Quais são os prós e contras?",
+    desmontar_conceito:
+      "Desmonte o conceito em partes: Divida (conceito) em seus componentes essenciais. Explique cada parte em linguagem clara, mostre qual função ela exerce dentro do conceito e como se relaciona com as demais. Ao final, reorganize essas partes para apresentar a estrutura completa do conceito de forma resumida.",
+    fundamentos_conceito:
+      "Volte aos fundamentos do conceito: Quero entender (conceito), mas antes identifique quais conhecimentos prévios são essenciais para compreendê-lo. Organize esses pré-requisitos em uma ordem lógica, do mais básico ao mais avançado, e explique brevemente cada um. Depois, mostre como eles levam ao conceito principal. Não presuma conhecimentos que não tenham sido apresentados.",
     pareto_prompt: "Aplique a regra de Pareto nestes conteúdos...",
 
     // Select options - Formato da resposta
@@ -604,6 +636,10 @@ const translations = {
     varias_perguntas: "Wait as I will ask several questions about ",
     diferencas: "What are the differences between ",
     pros_contras: "What are the pros and cons?",
+    desmontar_conceito:
+      "Break the concept down into parts: Divide (concept) into its essential components. Explain each part in clear language, show what function it serves within the concept, and how it relates to the others. Finally, reorganize these parts to present the complete structure of the concept in a summarized way.",
+    fundamentos_conceito:
+      "Go back to the fundamentals of the concept: I want to understand (concept), but first identify which prior knowledge is essential to understand it. Organize these prerequisites in a logical order, from the most basic to the most advanced, and briefly explain each one. Then show how they lead to the main concept. Do not assume any knowledge that has not been presented.",
     pareto_prompt: "Apply the Pareto principle to this content...",
 
     // Select options - Response format
